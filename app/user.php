@@ -1,6 +1,6 @@
 
 <?
-$user  =[
+$userJ  =[
     'username' => 'Kate',
     'email'=> 'tr@mail.ru',
     'password'=>'123',
@@ -11,22 +11,22 @@ $user  =[
 ?>
 
  <?
-      function save_user($user){
-file_put_contents("./user.json ",json_encode($user));
+      function save_user($userJ){
+file_put_contents("./user.json ",json_encode($userJ));
       } 
 
 //function load_user(){
-  // return  json_decode(file_get_contents("./data/user.json"),true);  
+  // return  json_decode(file_get_contents("./data/userJ.json"),true);  
   //  }
 
 
       ?>
 <?
-function render($user){
-   return     $template="<div>"."<h2>{$user['username']}</h2>"."</div>";
+function render($userJ){
+   return     $template="<div>"."<h2>{$userJ['username']}</h2>"."</div>";
   
     }
 ?>
 <?
-save_user($user);
+save_user($userJ);
 ?>
