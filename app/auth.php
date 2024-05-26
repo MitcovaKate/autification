@@ -18,7 +18,7 @@ function register($username,$email,$password){
 }
 //hw2   other way
 function register2($username, $email, $password) {
-    $error = search($username) ? 'ERROR: Username is not available' : '';
+    $error = search($username) ? 'ERROR: Username is not available' : false;
 
     if (!$error) {
         $user = [
