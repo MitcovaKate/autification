@@ -56,7 +56,11 @@ function authenticate($username,$password){
 }     
 
 
-function login($username){
+function login($user){
+session_start();
+//remove password from the data
+unset($user[2]);
+$_SESSION['username'] = $user;
 
 
 }
