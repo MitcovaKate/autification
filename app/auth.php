@@ -7,7 +7,7 @@ function register($username,$email,$password){
     $user=[
         $username,
         $email,
-        $password,
+        password_hash($password);,
         true,
         0.0
     ];
@@ -57,16 +57,22 @@ function authenticate($username,$password){
 
 
 function login($user){
-session_start();
+session_status() == PHP_SESSION_ACTIVE||session_start();
 //remove password from the data
 unset($user[2]);
-$_SESSION['username'] = $user;
+$_SESSION['user'] = $user;
 
 
 }
 
-function logout($username){
+function is_loged_in(){
+session_status() == PHP_SESSION_ACTIVE||session_start();
+return isset($_SESSION['user']);
+}
 
+function logout(){
+session_status() == PHP_SESSION_ACTIVE||session_start();
+unset($_SESSION['user']);
 }
 
 
@@ -74,7 +80,7 @@ function logout($username){
 function search($username){
     $fp=fopen('users.csv', 'r');
     while(true){
-        $user=fgetcsv($fp);
+    $user=fgetcsv($fp);
     if($user === false || $user[0] === $username)
     break;
     }
